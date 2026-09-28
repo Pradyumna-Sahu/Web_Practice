@@ -1,0 +1,1461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student assignment website for NIST University, Berhampur, Odisha.">
+  <title>NIST University | Berhampur</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --navy: #10243e;
+      --blue: #1d5684;
+      --orange: #f4773b;
+      --light: #f4f7fa;
+      --white: #ffffff;
+      --text: #263548;
+      --muted: #657487;
+      --border: #e1e8ef;
+      --shadow: 0 12px 35px rgba(16, 36, 62, 0.09);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    .container {
+      width: min(1160px, 90%);
+      margin: auto;
+    }
+
+    /* HEADER */
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      box-shadow: 0 2px 15px rgba(16, 36, 62, 0.07);
+    }
+
+    .header-inner {
+      min-height: 82px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 240px;
+    }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--navy);
+      color: var(--white);
+      font-family: "Manrope", sans-serif;
+      font-size: 25px;
+      font-weight: 800;
+      border: 3px solid var(--orange);
+    }
+
+    .brand-name {
+      color: var(--navy);
+      font-family: "Manrope", sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .brand-name small {
+      display: block;
+      margin-top: 5px;
+      color: var(--muted);
+      font-family: "DM Sans", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--orange);
+    }
+
+    .nav-links .contact-link {
+      padding: 11px 17px;
+      border-radius: 6px;
+      color: var(--white);
+      background: var(--orange);
+    }
+
+    .menu-toggle {
+      display: none;
+      border: 0;
+      background: transparent;
+      color: var(--navy);
+      font-size: 28px;
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      position: relative;
+      min-height: 590px;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      color: var(--white);
+      background: var(--navy);
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(9, 27, 49, 0.94) 0%,
+        rgba(9, 27, 49, 0.76) 48%,
+        rgba(9, 27, 49, 0.22) 100%
+      );
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      width: min(1160px, 90%);
+      margin: auto;
+      padding: 90px 0;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      margin-bottom: 20px;
+      padding: 7px 13px;
+      border: 1px solid rgba(255,255,255,0.45);
+      border-radius: 30px;
+      color: #f9c5a9;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 {
+      max-width: 720px;
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(42px, 6vw, 76px);
+      font-weight: 800;
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+    }
+
+    .hero h1 span {
+      color: #ff9a65;
+    }
+
+    .hero p {
+      max-width: 580px;
+      margin: 22px 0 30px;
+      color: #e0e8f1;
+      font-size: 16px;
+      line-height: 1.8;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 13px 23px;
+      border: 0;
+      border-radius: 6px;
+      background: var(--orange);
+      color: var(--white);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .button:hover {
+      background: #df6028;
+      transform: translateY(-2px);
+    }
+
+    .hero .button {
+      background: var(--white);
+      color: var(--navy);
+    }
+
+    .hero .button:hover {
+      background: #f0f3f6;
+    }
+
+    /* SECTION COMMON */
+
+    section {
+      scroll-margin-top: 82px;
+    }
+
+    .section {
+      padding: 85px 0;
+    }
+
+    .section-heading {
+      max-width: 700px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 10px;
+      color: var(--orange);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1.7px;
+      text-transform: uppercase;
+    }
+
+    .section-heading h2 {
+      color: var(--navy);
+      font-family: "Manrope", sans-serif;
+      font-size: clamp(30px, 4vw, 43px);
+      line-height: 1.2;
+    }
+
+    .section-heading p {
+      margin-top: 14px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* ABOUT */
+
+    .about {
+      background: var(--light);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 55px;
+    }
+
+    .about-image {
+      position: relative;
+      min-height: 390px;
+      overflow: hidden;
+      border-radius: 14px;
+      background: #dce5ec;
+      box-shadow: var(--shadow);
+    }
+
+    .about-image img {
+      width: 100%;
+      height: 390px;
+      object-fit: cover;
+    }
+
+    .about-copy h2 {
+      margin-bottom: 17px;
+      color: var(--navy);
+      font-family: "Manrope", sans-serif;
+      font-size: 34px;
+      line-height: 1.25;
+    }
+
+    .about-copy > p {
+      margin-bottom: 15px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 25px;
+    }
+
+    .info-box {
+      padding: 18px;
+      border-left: 4px solid var(--orange);
+      border-radius: 7px;
+      background: var(--white);
+    }
+
+    .info-box h3 {
+      margin-bottom: 7px;
+      color: var(--navy);
+      font-family: "Manrope", sans-serif;
+      font-size: 16px;
+    }
+
+    .info-box p {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* COURSES */
+
+    .courses {
+      background: var(--white);
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .course-card {
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: 0 5px 20px rgba(16, 36, 62, 0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .course-card:hover {
+      transform: translateY(-7px);
+      box-shadow: var(--shadow);
+    }
+
+    .course-image {
+      height: 155px;
+      overflow: hidden;
+      background: var(--light);
+    }
+
+    .course-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .course-card:hover .course-image img {
+      transform: scale(1.05);
+    }
+
+    .course-body {
+      padding: 21px;
+    }
+
+    .course-body h3 {
+      margin-bottom: 8px;
+      color: var(--navy);
+      font-family: "Manrope", sans-serif;
+      font-size: 18px;
+    }
+
+    .course-body p {
+      min-height: 62px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .course-label {
+      display: inline-block;
+      margin-top: 16px;
+      padding: 5px 9px;
+      border-radius: 4px;
+      background: #fff0e8;
+      color: #b84d1d;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    /* FACULTY */
+
+    .faculty {
+      background: var(--light);
+    }
+
+    .table-wrap {
+      overflow-x: auto;
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    thead {
+      background: var(--navy);
+      color: var(--white);
+    }
+
+    th,
+    td {
+      padding: 17px 20px;
+      border-bottom: 1px solid var(--border);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    th {
+      font-size: 12px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    tbody tr:hover {
+      background: #f8fafc;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* FACILITIES */
+
+    .facilities {
+      background: var(--white);
+    }
+
+    .facility-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .facility-card {
+      position: relative;
+      min-height: 215px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 25px;
+      overflow: hidden;
+      border-radius: 12px;
+      color: var(--white);
+      background: var(--navy);
+      isolation: isolate;
+    }
+
+    .facility-card img {
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .facility-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(0deg, rgba(9, 27, 49, 0.92), rgba(9, 27, 49, 0.12));
+    }
+
+    .facility-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .facility-card h3 {
+      margin-bottom: 5px;
+      font-family: "Manrope", sans-serif;
+      font-size: 21px;
+    }
+
+    .facility-card p {
+      color: #e3eaf2;
+      font-size: 13px;
+    }
+
+    /* ADMISSION FORM */
+
+    .admission {
+      background: var(--light);
+    }
+
+    .form-card {
+      max-width: 850px;
+      margin: auto;
+      padding: 35px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    .form-group label,
+    .form-label {
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 12px 13px;
+      border: 1px solid #ccd6e0;
+      border-radius: 6px;
+      outline: none;
+      background: var(--white);
+      color: var(--text);
+      font-size: 14px;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(29, 86, 132, 0.1);
+    }
+
+    textarea {
+      min-height: 105px;
+      resize: vertical;
+    }
+
+    .radio-row,
+    .checkbox-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 15px;
+      padding: 7px 0;
+    }
+
+    .radio-row label,
+    .checkbox-row label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .radio-row input,
+    .checkbox-row input {
+      width: auto;
+      accent-color: var(--blue);
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .button-secondary {
+      padding: 13px 23px;
+      border: 1px solid #bdc8d4;
+      border-radius: 6px;
+      background: var(--white);
+      color: var(--navy);
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .form-message {
+      display: none;
+      margin-top: 18px;
+      padding: 12px 15px;
+      border-radius: 6px;
+      background: #e9f7ef;
+      color: #17683b;
+      font-size: 13px;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: var(--white);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.8fr 1.2fr;
+      gap: 35px;
+      align-items: stretch;
+    }
+
+    .contact-details {
+      display: grid;
+      gap: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 9px;
+      background: var(--light);
+    }
+
+    .contact-icon {
+      flex: 0 0 40px;
+      width: 40px;
+      height: 40px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: 18px;
+    }
+
+    .contact-item h3 {
+      margin-bottom: 4px;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .contact-item p,
+    .contact-item a {
+      color: var(--muted);
+      font-size: 13px;
+      overflow-wrap: anywhere;
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 360px;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      padding: 45px 0 20px;
+      background: #0b1a2d;
+      color: var(--white);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 35px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .footer-brand {
+      max-width: 340px;
+    }
+
+    .footer-brand h2 {
+      margin-bottom: 10px;
+      font-family: "Manrope", sans-serif;
+      font-size: 21px;
+    }
+
+    .footer-brand p {
+      color: #b9c5d3;
+      font-size: 13px;
+    }
+
+    .footer-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .footer-nav a:hover {
+      color: #ff9a65;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding-top: 20px;
+      color: #aab8c8;
+      font-size: 11px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+      .nav-links {
+        gap: 15px;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      .course-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .about-grid {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .header-inner {
+        min-height: 72px;
+      }
+
+      .brand {
+        min-width: 0;
+      }
+
+      .brand-logo {
+        width: 45px;
+        height: 45px;
+      }
+
+      .brand-name {
+        font-size: 14px;
+      }
+
+      .brand-name small {
+        font-size: 9px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-links {
+        position: absolute;
+        top: 72px;
+        left: 0;
+        right: 0;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px 5% 18px;
+        background: var(--white);
+        box-shadow: 0 12px 18px rgba(16, 36, 62, 0.1);
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 12px 5px;
+        font-size: 14px;
+      }
+
+      .nav-links .contact-link {
+        display: inline-block;
+        margin-top: 7px;
+        padding: 10px 15px;
+      }
+
+      .hero {
+        min-height: 530px;
+      }
+
+      .hero-content {
+        padding: 75px 0;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero p {
+        font-size: 14px;
+      }
+
+      .section {
+        padding: 65px 0;
+      }
+
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-image,
+      .about-image img {
+        min-height: 280px;
+        height: 280px;
+      }
+
+      .about-copy h2 {
+        font-size: 29px;
+      }
+
+      .facility-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .facility-card {
+        min-height: 190px;
+      }
+
+      .form-card {
+        padding: 23px;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        width: 91%;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-content {
+        width: 91%;
+      }
+
+      .section-heading {
+        margin-bottom: 30px;
+      }
+
+      .section-heading h2 {
+        font-size: 29px;
+      }
+
+      .course-grid,
+      .facility-grid,
+      .mission-vision,
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-group.full {
+        grid-column: auto;
+      }
+
+      .course-body p {
+        min-height: 0;
+      }
+
+      .facility-card {
+        min-height: 220px;
+      }
+
+      .form-buttons {
+        flex-direction: column;
+      }
+
+      .form-buttons button {
+        width: 100%;
+      }
+
+      .footer-nav {
+        gap: 13px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
+
+      th,
+      td {
+        padding: 13px 15px;
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container header-inner">
+      <a class="brand" href="#home" aria-label="NIST University home">
+        <div class="brand-logo">N</div>
+        <div class="brand-name">
+          NIST UNIVERSITY
+          <small>BERHAMPUR · ODISHA</small>
+        </div>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false">
+        ☰
+      </button>
+
+      <nav aria-label="Main navigation">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#courses">Courses</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#facilities">Facilities</a></li>
+          <li><a class="contact-link" href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HOME -->
+    <section class="hero" id="home">
+      <img
+        class="hero-image"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXFHp2TIJhVOMjca8nbTC59uzBpicBO7RRJ7DOQoDi0N8vua57qtZ1kJ4&s=10"
+        alt="NIST University image"
+      >
+
+      <div class="hero-content">
+        <span class="hero-tag">NIST University · Berhampur</span>
+        <h1>Discover Your Potential.<br><span>Build Your Future.</span></h1>
+        <p>
+          Welcome to NIST University, Berhampur, Odisha. Explore academic
+          opportunities, campus facilities, and a learning environment that
+          encourages knowledge, creativity, and innovation.
+        </p>
+        <a class="button" href="#about">Learn More</a>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section about" id="about">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">About the University</div>
+          <h2>Learning, Innovation and Opportunity</h2>
+          <p>Get to know NIST University and its educational purpose.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-image">
+            <img
+              src="https://www.nist.edu/nist/images/New/IIRF-RANKING.webp"
+              alt="NIST University campus"
+              onerror="this.style.display='none'; this.parentElement.style.background='#dce5ec';"
+            >
+          </div>
+
+          <div class="about-copy">
+            <h2>About NIST University</h2>
+            <p>
+              NIST University is located at Institute Park, Berhampur, Odisha.
+              The university provides undergraduate, postgraduate, and research
+              opportunities across areas including engineering, science,
+              management, and health sciences.
+            </p>
+            <p>
+              Its campus includes academic buildings, laboratories, classrooms,
+              library facilities, student residences, and spaces for sports
+              and student activities.
+            </p>
+
+            <div class="mission-vision">
+              <article class="info-box">
+                <h3>Our Mission</h3>
+                <p>
+                  To support academic excellence, fundamental research,
+                  innovation, global citizenship, and collaborative engagement.
+                </p>
+              </article>
+
+              <article class="info-box">
+                <h3>Our Vision</h3>
+                <p>
+                  To encourage high-quality learning, creative innovation,
+                  entrepreneurship, and partnerships.
+                </p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSES -->
+    <section class="section courses" id="courses">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Academic Programs</div>
+          <h2>Explore Our Courses</h2>
+          <p>
+            The following course cards are included to meet the academic
+            website assignment requirements.
+          </p>
+        </div>
+
+        <div class="course-grid">
+          <article class="course-card">
+            <div class="course-image">
+              <img
+                src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80"
+                alt="Students working with computers"
+                loading="lazy"
+              >
+            </div>
+            <div class="course-body">
+              <h3>B.Tech CSE</h3>
+              <p>Computer Science and Engineering focuses on computing, software, algorithms, and technology.</p>
+              <span class="course-label">Undergraduate</span>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-image">
+              <img
+                src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?auto=format&fit=crop&w=900&q=80"
+                alt="Electronics engineering equipment"
+                loading="lazy"
+              >
+            </div>
+            <div class="course-body">
+              <h3>B.Tech ECE</h3>
+              <p>Electronics and Communication Engineering covers electronic systems, communication, and circuits.</p>
+              <span class="course-label">Undergraduate</span>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-image">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcReAet1eqYSgQHDD7gd9ocqogwsMtbIUi-4M7TX6syxWJ_PsbTqVjMHjjzJ&s=10"
+                alt="Electrical power infrastructure"
+                loading="lazy"
+              >
+            </div>
+            <div class="course-body">
+              <h3>B.Tech EEE</h3>
+              <p>Electrical and Electronics Engineering explores electrical systems, power, machines, and control.</p>
+              <span class="course-label">Undergraduate</span>
+            </div>
+          </article>
+
+          <article class="course-card">
+            <div class="course-image">
+              <img
+                src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80"
+                alt="Students learning computer applications"
+                loading="lazy"
+              >
+            </div>
+            <div class="course-body">
+              <h3>MCA</h3>
+              <p>Master of Computer Applications develops advanced knowledge in software and computing applications.</p>
+              <span class="course-label">Postgraduate</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACULTY -->
+    <section class="section faculty" id="faculty">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Faculty Directory</div>
+          <h2>Meet Our Faculty</h2>
+          <p>Faculty details presented in the format specified for this assignment.</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Faculty Name</th>
+                <th>Department</th>
+                <th>Designation</th>
+                <th>Experience</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Dr. Raj Kumar</td>
+                <td>CSE</td>
+                <td>Professor</td>
+                <td>15 Years</td>
+              </tr>
+              <tr>
+                <td>Dr. Anita Das</td>
+                <td>ECE</td>
+                <td>Associate Professor</td>
+                <td>10 Years</td>
+              </tr>
+              <tr>
+                <td>Mr. Rahul Singh</td>
+                <td>CSE</td>
+                <td>Assistant Professor</td>
+                <td>5 Years</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- FACILITIES -->
+    <section class="section facilities" id="facilities">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Campus Facilities</div>
+          <h2>Facilities for Learning and Growth</h2>
+          <p>
+            Academic and campus facilities that support student learning,
+            recreation, and campus life.
+          </p>
+        </div>
+
+        <div class="facility-grid">
+          <article class="facility-card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTi5LnmTI9noJsEntMzjCcn4ku0W92R4F4Y2OiPlnV42-ne4BWtKcIC1Hjh&s=10"
+              alt="Computer laboratory"
+              loading="lazy"
+            >
+            <h3>Computer Lab</h3>
+            <p>Practical computing and laboratory learning.</p>
+          </article>
+
+          <article class="facility-card">
+            <img
+              src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&w=900&q=80"
+              alt="Library bookshelves"
+              loading="lazy"
+            >
+            <h3>Library</h3>
+            <p>Books, academic resources, and study spaces.</p>
+          </article>
+
+          <article class="facility-card">
+            <img
+              src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=900&q=80"
+              alt="Classroom"
+              loading="lazy"
+            >
+            <h3>Smart Classroom</h3>
+            <p>Technology-supported teaching and presentations.</p>
+          </article>
+
+          <article class="facility-card">
+            <img
+              src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80"
+              alt="Student accommodation"
+              loading="lazy"
+            >
+            <h3>Hostel</h3>
+            <p>Residential facilities for students.</p>
+          </article>
+
+          <article class="facility-card">
+            <img
+              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxDq5N-w7MXgRhgaYfjO9YShuQPFFIX0GpWX93QsjMp59n8m7BP5-iUt4&s=10"
+              alt="Sports facility"
+              loading="lazy"
+            >
+            <h3>Sports Complex</h3>
+            <p>Spaces for sports, fitness, and recreation.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ADMISSION FORM -->
+    <section class="section admission" id="admission">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Student Registration</div>
+          <h2>Admission Enquiry Form</h2>
+          <p>Fill in the details below to demonstrate an online admission form.</p>
+        </div>
+
+        <form class="form-card" id="admissionForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="studentName">Student Name</label>
+              <input type="text" id="studentName" name="studentName" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="name@example.com" required>
+            </div>
+
+            <div class="form-group">
+              <label for="mobile">Mobile Number</label>
+              <input type="tel" id="mobile" name="mobile" placeholder="10-digit mobile number" pattern="[0-9]{10}" maxlength="10" required>
+            </div>
+
+            <div class="form-group">
+              <label for="dob">Date of Birth</label>
+              <input type="date" id="dob" name="dob" required>
+            </div>
+
+            <div class="form-group full">
+              <span class="form-label">Gender</span>
+              <div class="radio-row">
+                <label><input type="radio" name="gender" value="Male" required> Male</label>
+                <label><input type="radio" name="gender" value="Female"> Female</label>
+                <label><input type="radio" name="gender" value="Other"> Other</label>
+                <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="course">Course Selection</label>
+              <select id="course" name="course" required>
+                <option value="">Select a course</option>
+                <option value="B.Tech CSE">B.Tech CSE</option>
+                <option value="B.Tech ECE">B.Tech ECE</option>
+                <option value="B.Tech EEE">B.Tech EEE</option>
+                <option value="MCA">MCA</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="photo">Upload Photo</label>
+              <input type="file" id="photo" name="photo" accept="image/*">
+            </div>
+
+            <div class="form-group full">
+              <span class="form-label">Hobbies</span>
+              <div class="checkbox-row">
+                <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+                <label><input type="checkbox" name="hobbies" value="Sports"> Sports</label>
+                <label><input type="checkbox" name="hobbies" value="Music"> Music</label>
+                <label><input type="checkbox" name="hobbies" value="Coding"> Coding</label>
+                <label><input type="checkbox" name="hobbies" value="Arts"> Arts</label>
+              </div>
+            </div>
+
+            <div class="form-group full">
+              <label for="address">Address</label>
+              <textarea id="address" name="address" placeholder="Enter your complete address" required></textarea>
+            </div>
+          </div>
+
+          <div class="form-buttons">
+            <button class="button" type="submit">Submit Application</button>
+            <button class="button-secondary" type="reset">Reset Form</button>
+          </div>
+
+          <p class="form-message" id="formMessage" role="status">
+            Form submitted for demonstration. No information has been sent to a server.
+          </p>
+        </form>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="container">
+        <div class="section-heading">
+          <div class="eyebrow">Get in Touch</div>
+          <h2>Contact NIST University</h2>
+          <p>Use the contact information and map below to locate the university.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-details">
+            <article class="contact-item">
+              <div class="contact-icon">⌖</div>
+              <div>
+                <h3>College Address</h3>
+                <p>Institute Park, Berhampur, Odisha - 761008, India</p>
+              </div>
+            </article>
+
+            <article class="contact-item">
+              <div class="contact-icon">☎</div>
+              <div>
+                <h3>Phone Number</h3>
+                <p>+91-0680-2492421 / 422</p>
+              </div>
+            </article>
+
+            <article class="contact-item">
+              <div class="contact-icon">✉</div>
+              <div>
+                <h3>Email Address</h3>
+                <p><a href="mailto:info@nist.edu">info@nist.edu</a></p>
+              </div>
+            </article>
+
+            <article class="contact-item">
+              <div class="contact-icon">↗</div>
+              <div>
+                <h3>Official Website</h3>
+                <p><a href="https://nist.edu/" target="_blank" rel="noopener">www.nist.edu</a></p>
+              </div>
+            </article>
+          </div>
+
+          <iframe
+            class="map-frame"
+            title="Google Maps location of NIST University, Berhampur"
+            src="https://www.google.com/maps?q=NIST%20University%20Institute%20Park%20Berhampur%20Odisha&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h2>NIST UNIVERSITY</h2>
+          <p>
+            Institute Park, Berhampur, Odisha - 761008, India.
+            Learning, research, and innovation.
+          </p>
+        </div>
+
+        <nav class="footer-nav" aria-label="Footer navigation">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#courses">Courses</a>
+          <a href="#faculty">Faculty</a>
+          <a href="#facilities">Facilities</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+
+
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      menuToggle.setAttribute("aria-expanded", isOpen);
+      menuToggle.textContent = isOpen ? "×" : "☰";
+    });
+
+    navLinks.querySelectorAll("a").forEach(link => {
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+        menuToggle.textContent = "☰";
+      });
+    });
+
+    const admissionForm = document.getElementById("admissionForm");
+    const formMessage = document.getElementById("formMessage");
+
+    admissionForm.addEventListener("submit", event => {
+      event.preventDefault();
+
+      if (!admissionForm.checkValidity()) {
+        admissionForm.reportValidity();
+        return;
+      }
+
+      formMessage.style.display = "block";
+      admissionForm.reset();
+    });
+
+    admissionForm.addEventListener("reset", () => {
+      formMessage.style.display = "none";
+    });
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+
+</body>
+</html>
